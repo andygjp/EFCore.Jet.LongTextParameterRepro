@@ -52,11 +52,15 @@ dotnet run -- C:\path\to\Empty.mdb
 If you get `ERROR [IM003] Specified driver could not be loaded due to system error 193`, the process and the driver
 have different architectures: use the other `-r`.
 
-## Expected output
+## Output
 
-Without the workaround, the 256 and 300 character saves fail. With it, every save keeps the whole value:
+Without the workaround, the 256 and 300 character saves fail. With it, every save keeps the whole value. From a run on
+Windows 11 on ARM, as x64, with the driver from Microsoft 365 (Office 16, x64):
 
 ```
+Process architecture: X64
+Database: C:\Users\andrewpattison\AppData\Local\Temp\LongTextParameterRepro-20261110-154159.mdb
+
 Operation  Length  Workaround  Outcome
 Insert        255  no          saved whole
 Insert        256  no          FAILED: ERROR [HY104] [Microsoft][ODBC Microsoft Access Driver]Invalid precision value
